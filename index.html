@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>靈魂使命探索課程｜一年制靈性成長課程</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'vijnana-background':    '#F9F8F7',
+            'vijnana-elevated':      '#F2EFEB',
+            'vijnana-stroke':        '#D9CDBF',
+            'vijnana-text-primary':  '#332718',
+            'vijnana-text-secondary':'#735A47',
+            'vijnana-on-background': '#FFF8F0',
+            'vijnana-accent-beige':  '#F0DFC9',
+            'vijnana-accent-brown':  '#614835',
+            'vijnana-accent-orange': '#DB7B00',
+          },
+          fontFamily: {
+            serif: ['"Noto Serif TC"', 'serif'],
+            sans:  ['"Noto Sans TC"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ── Global ── */
+    body { background-color: #F9F8F7; color: #332718; font-family: 'Noto Sans TC', sans-serif; }
+    .custom-container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+    @media (min-width: 1024px) { .custom-container { padding: 0 2rem; } }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ── Hero animation ── */
+    @keyframes fadeSlideUp {
+      0%   { opacity: 0; transform: translateY(18px); }
+      15%  { opacity: 1; transform: translateY(0); }
+      80%  { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-12px); }
+    }
+    .hero-question { animation: fadeSlideUp 3.5s ease-in-out infinite; }
+
+    /* ── Sticky nav active indicator ── */
+    .tab-active {
+      background-image: radial-gradient(50% 31.84% at 50% 100%, rgba(243,192,129,0.4) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    /* ── Modal backdrop ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(51,39,24,0.55);
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #FFF8F0;
+      border-radius: 8px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* ── FAQ accordion ── */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer.open { max-height: 1000px; }
+    .faq-chevron { transition: transform 0.3s ease; }
+    .faq-chevron.open { transform: rotate(180deg); }
+
+    /* ── Timetable ── */
+    .timetable-row:nth-child(even) { background: #F2EFEB; }
+
+    /* ── Stage card ── */
+    .stage-card { border: 1px solid #D9CDBF; border-radius: 8px; background: #FFF8F0; overflow: hidden; }
+    .stage-card:hover { border-color: #614835; }
+    .stage-card-img { position: relative; width: 100%; overflow: hidden; aspect-ratio: 4 / 5.4; }
+    .stage-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .stage-card-img .img-gradient { pointer-events: none; position: absolute; inset-x: 0; bottom: 0; height: 80px; background: linear-gradient(to top, #FFF8F0, transparent); }
+    /* ── Modal image ── */
+    .modal-hero-img { position: relative; width: 100%; margin: -2rem -2rem 1.5rem -2rem; width: calc(100% + 4rem); overflow: hidden; aspect-ratio: 16 / 9; }
+    .modal-hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-hero-img .img-gradient { pointer-events: none; position: absolute; inset-x: 0; bottom: 0; height: 80px; background: linear-gradient(to top, #FFF8F0, transparent); }
+    /* ── Sticky bottom bar ── */
+    #sticky-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; box-shadow: 0 -2px 16px rgba(60,30,10,0.18); }
+    #sticky-bottom-bar.visible { display: flex; }
+    #sticky-bottom-bar a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 17.6px 8px; font-family: 'Noto Sans TC', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; text-decoration: none; transition: opacity 0.2s; }
+    #sticky-bottom-bar a:hover { opacity: 0.88; }
+    #sticky-bottom-bar a:first-child { background: rgb(92, 61, 46); color: rgb(251, 246, 240); border-right: 1px solid rgba(255,255,255,0.15); }
+    #sticky-bottom-bar a:last-child { background: rgb(200, 134, 74); color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     1. HERO SECTION
+════════════════════════════════════════════════════════ -->
+<section class="relative w-full min-h-[600px] aspect-[2/3] md:aspect-[16/9] bg-vijnana-elevated overflow-hidden rounded-none lg:rounded-b-lg -mb-6">
+  <!-- Mobile image -->
+  <div class="md:hidden absolute inset-0">
+    <img alt="靈魂使命探索課程" class="object-cover w-full h-full" src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/meditation-benefits-mobile.webp?v=1778142700724" />
+  </div>
+  <!-- Desktop image -->
+  <div class="hidden md:block absolute inset-0">
+    <img alt="靈魂使命探索課程" class="object-cover w-full h-full" src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/meditation-benefits-desktop.webp?v=1778142693261" />
+  </div>
+  <!-- Gradient overlay -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#FFF8F0] via-[#FFF8F0]/80 to-transparent"></div>
+
+  <!-- Hero content -->
+  <div class="relative h-full flex flex-col justify-end pb-4 lg:pb-8 z-10">
+    <div class="custom-container px-5 pt-12 md:pt-0">
+      <div class="max-w-4xl mt-16 md:mt-0">
+        <!-- Badge -->
+        <span class="inline-flex items-center text-xs font-medium font-sans text-vijnana-accent-orange bg-[#DB7B00]/10 rounded-full px-3 py-1 mb-2">深度課程</span>
+        <!-- Title -->
+        <h1 class="font-serif tracking-wide text-[26px] md:text-[36px] lg:text-[56px] font-bold leading-[1.35] mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]">
+          靈魂使命探索課程<br class="hidden md:block" />｜一年制靈性成長課程
+        </h1>
+        <!-- Subtitle -->
+        <p class="font-serif font-black text-[16px] md:text-[18px] leading-[1.5] tracking-[0.04em] mb-2">
+          Mei Leung 陪伴你一起，走出你獨特的生命道路。
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-0 mb-4 md:mb-6">
+          <a href="https://wa.me/85262886826?text=您好，我想查詢靈魂使命探索課程" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center justify-center bg-vijnana-accent-brown text-white px-6 h-12 rounded text-[14px] md:text-[16px] font-medium tracking-wide font-sans hover:opacity-90 transition-opacity duration-300">
+            立即查詢
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     2. STICKY TAB NAVIGATION
+════════════════════════════════════════════════════════ -->
+<div class="bg-vijnana-on-background border-b border-vijnana-stroke sticky z-20" style="top:0">
+  <nav aria-label="課程分頁" class="w-full" role="tablist">
+    <div class="custom-container lg:px-0">
+      <ul class="flex justify-start lg:justify-center whitespace-nowrap overflow-x-auto no-scrollbar lg:overflow-x-visible px-4 lg:px-0" role="tablist">
+        <li class="relative flex-shrink-0 text-center min-w-[100px] lg:flex-1">
+          <a href="#section-about" class="tab-link tab-active relative block w-full px-1 md:px-4 lg:px-6 py-5 text-center text-base leading-[1.4] tracking-wide font-black font-serif transition-colors duration-300 focus:outline-none text-vijnana-text-primary">簡介</a>
+        </li>
+        <li class="relative flex-shrink-0 text-center min-w-[100px] lg:flex-1">
+          <a href="#section-syllabus" class="tab-link relative block w-full px-1 md:px-4 lg:px-6 py-5 text-center text-base leading-[1.4] tracking-wide font-black font-serif text-vijnana-text-secondary transition-colors duration-300 focus:outline-none">課程內容</a>
+        </li>
+        <li class="relative flex-shrink-0 text-center min-w-[140px] lg:flex-1">
+          <a href="#section-pricing" class="tab-link relative block w-full px-1 md:px-4 lg:px-6 py-5 text-center text-base leading-[1.4] tracking-wide font-black font-serif text-vijnana-text-secondary transition-colors duration-300 focus:outline-none">收費、日期及報名方法</a>
+        </li>
+        <li class="relative flex-shrink-0 text-center min-w-[100px] lg:flex-1">
+          <a href="#section-faq" class="tab-link relative block w-full px-1 md:px-4 lg:px-6 py-5 text-center text-base leading-[1.4] tracking-wide font-black font-serif text-vijnana-text-secondary transition-colors duration-300 focus:outline-none">常見問題</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     3. ABOUT / INTRO SECTION
+════════════════════════════════════════════════════════ -->
+<section id="section-about" class="scroll-mt-20 pt-12 pb-8">
+  <div class="custom-container">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif font-black tracking-wide text-[26px] md:text-[32px] leading-[1.5] mb-6 mt-0">
+        這個課程，我們將會以一年的時間，陪伴你走上靈性探索的道路，走上靈魂使命實踐的旅程，這是一個關於重新創造自己的旅程！
+      </h2>
+
+      <div class="space-y-5 font-serif text-[15px] md:text-[16px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+        <p>你是誰？<br />
+          你是一個怎樣的人？你的個性、特質、特長是什麼？<br />
+          你想成為一個怎樣的人？你的理想和願景是什麼？<br />
+          你該做怎樣的事，來完成自己的願景？<br />
+          你想如何影響身邊人及世界？<br />
+          此刻障礙著你的是甚麼？<br />
+          你為什麼在看這個課程？你想得到什麼？
+        </p>
+        <p>每一個靈魂，都有自己的生命課題，有我們自己今生想要探索和完滿的心願，這些心願不分高低、大小。我們很多時候不知道內心的湧動是什麼，可能是隱隱然的感覺到，渴望活出不一樣自己，不一樣的狀態；然而，也不知道該如何踏上尋找的道路。</p>
+        <p><strong>如果你有願望未了，感覺生命未完滿，或是生命已經轉化了，渴望探索生命的奧妙，我們都歡迎你。我們陪伴你一起找回自己，成為你自己的創造者，走出你獨特的生命道路。</strong></p>
+        <p>願力不分大小高低：<br />
+          或許，你是想轉換人生跑道；<br />
+          或許，你是想創業；<br />
+          或許，你是想突破自我，收獲更好的愛情／事業／健康／財富；<br />
+          或許，你是想活出更高版本的自己，活出更精彩的生命；<br />
+          或許，你渴望成為愛，滋養和守護身邊你想愛的人；<br />
+          或許，你想療癒他人，傳播愛；<br />
+          或許，你是想渡眾生，成為助人者；<br />
+          或許，你只是純粹探索，想認識真實的自己；<br />
+          或許，你是渴望了悟生命的奧妙，參悟生老病死。
+        </p>
+        <p>每一個靈魂，都擁有自己的特質和特長、自己的使命，需要通過靈魂使命的實踐，填滿內在的缺口，讓我們完整，讓我們完滿。每一位踏上靈魂使命實踐之旅的勇士，都是既勇敢又害怕，既渴望又懷疑；然而，這旅程是我們心之所願，是我們生而為人的原因。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     4. INSTRUCTOR BIO (Plain Text, Elevated Background)
+════════════════════════════════════════════════════════ -->
+<section class="bg-vijnana-elevated py-12 mt-4">
+  <div class="custom-container">
+    <div class="max-w-3xl mx-auto">
+    <h2 class="font-black text-[22px] md:text-[28px] leading-[1.4] tracking-wide font-sans text-left mb-6">我們都是平凡之軀，然而我們每個人都可以活出非凡。</h2>
+    <div class="space-y-5 font-sans text-[15px] md:text-[16px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>非凡，不是要與他人比較，不是贏過他人，不是要站在眾山之巔。真正的非凡，是從我們的生命經歷，從我們的個人特質和特長出發，淬煉出我們的力量、勇氣和愛，以我們最大的生命熱情，發揮我們的特質，活出我們每個人的獨特性，活出我們此生最高版本的自己。</p>
+      <p>實踐靈魂使命，踏上自己的舞台，讓自己活出最精彩的版本，是我們愛自己的最好方式，也是我們愛身邊人、愛世界、療癒世界的最好方式。讓我們一起，互相陪伴，踏上這一趟精彩的探索，讓我們的此生無憾亦無悔！</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     5. SYLLABUS / COURSE CONTENT INTRO
+════════════════════════════════════════════════════════ -->
+<section id="section-syllabus" class="scroll-mt-20 pt-12 pb-8">
+  <div class="custom-container">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif font-black tracking-wide text-[26px] md:text-[32px] leading-[1.4] mb-6">靈魂使命探索課程｜課程內容</h2>
+      <div class="space-y-5 font-serif text-[15px] md:text-[16px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+        <p>靈性感應不難，靈性落地才是最困難。很多人通過不同的靈性探索方法，了解自己的靈魂使命，然而在實踐層面，卻一直卡在原地，無法推進。</p>
+        <p>此課程沿襲Mei 老師一貫的療癒特色，需要先從自身能量（氣）系統入手，從內裡重整自己的生命能量，因為內在能量，決定了我們外在的行動力與創造力。再根據每個人的情況，制定行動的方向與計劃，然後在行動中，學習覺察、參悟、調整，提升對自身生命的深度和廣度的覺察力，找到前行的突破點。</p>
+        <p>自我認同是力量，也是約束。在靈魂使命的實踐中，自我認同的「破與立」，是一個循環不息的過程，也是這個創造過程最有趣的學習。不同階段，都需要破掉自己的盲點，重建新的自己，這是一個力量和智慧建立的過程；同時，通過逐層深入探索自己，你將認識人的身心靈機制的奧妙，認識生命的妙奧。</p>
+        <p><strong>課程分為五個階段，每個階段都是以「能量整合＋行動＋參悟＋調整」為基礎</strong>，配合相對應的方法與工具，助大家一層一層地深入認識自己，探索內在無限的生命資源，超越自己，活出自己。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     6. FIVE-STAGE CARDS (Extended Module)
+════════════════════════════════════════════════════════ -->
+<section class="pt-4 pb-12">
+  <div class="custom-container">
+    <p class="font-serif text-[15px] md:text-[16px] leading-[1.8] tracking-wide text-vijnana-text-secondary mb-8 max-w-3xl mx-auto">靈魂使命實踐計劃，包含以下五個階段，每一個階段有對應需要面對的課題、重建的力量，教授相應推進的方法與工具：</p>
+
+    <!-- Cards: stacked on mobile, grid on lg -->
+    <div class="flex flex-col gap-5 max-w-3xl mx-auto lg:max-w-none lg:grid lg:grid-cols-5 lg:gap-4">
+
+      <!-- Stage 1 -->
+      <div class="stage-card flex flex-col gap-0 transition-all duration-200">
+        <!-- Card image -->
+        <div class="stage-card-img">
+          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-main.webp?v=1778156580569" alt="起步期" loading="lazy" />
+          <div class="img-gradient"></div>
+        </div>
+        <div class="p-5 flex flex-col gap-3 flex-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-6 h-6 rounded-full bg-vijnana-accent-orange/20 text-vijnana-accent-orange text-xs font-bold flex items-center justify-center font-sans">1</span>
+          <span class="font-sans text-[14px] font-black text-vijnana-text-primary tracking-wide">起步期</span>
+        </div>
+        <h3 class="font-serif font-black text-[17px] leading-[1.4] tracking-wide text-vijnana-text-primary">靈魂使命實踐計劃制定</h3>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">2026年12月12–13日</p>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">16小時</p>
+        <ul class="space-y-1.5 flex-1">
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>開啟新的視野</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>看見自己生命的豐盛資源</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>制定具體靈魂實踐方案</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到生命的活力</li>
+        </ul>
+        <button onclick="openModal('modal-stage1')" class="mt-3 w-full py-2.5 rounded bg-vijnana-accent-brown text-white text-[13px] font-medium font-sans tracking-wide hover:opacity-90 transition-opacity">了解更多</button>
+        </div><!-- /p-5 -->
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-card flex flex-col gap-0 transition-all duration-200">
+        <!-- Card image -->
+        <div class="stage-card-img">
+          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-main.webp?v=1778156624908" alt="創造期" loading="lazy" />
+          <div class="img-gradient"></div>
+        </div>
+        <div class="p-5 flex flex-col gap-3 flex-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-6 h-6 rounded-full bg-vijnana-accent-orange/20 text-vijnana-accent-orange text-xs font-bold flex items-center justify-center font-sans">2</span>
+          <span class="font-sans text-[14px] font-black text-vijnana-text-primary tracking-wide">創造期</span>
+        </div>
+        <h3 class="font-serif font-black text-[17px] leading-[1.4] tracking-wide text-vijnana-text-primary">建立新的自我認同</h3>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">2027年1月至3月</p>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">24小時</p>
+        <ul class="space-y-1.5 flex-1">
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>超越挫敗帶來力量感</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>學會依據內在指引行動</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>覺察力和感知力再提升</li>
+        </ul>
+        <button onclick="openModal('modal-stage2')" class="mt-3 w-full py-2.5 rounded bg-vijnana-accent-brown text-white text-[13px] font-medium font-sans tracking-wide hover:opacity-90 transition-opacity">了解更多</button>
+        </div><!-- /p-5 -->
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-card flex flex-col gap-0 transition-all duration-200">
+        <!-- Card image -->
+        <div class="stage-card-img">
+          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-main.webp?v=1778156667258" alt="開拓期" loading="lazy" />
+          <div class="img-gradient"></div>
+        </div>
+        <div class="p-5 flex flex-col gap-3 flex-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-6 h-6 rounded-full bg-vijnana-accent-orange/20 text-vijnana-accent-orange text-xs font-bold flex items-center justify-center font-sans">3</span>
+          <span class="font-sans text-[14px] font-black text-vijnana-text-primary tracking-wide">開拓期</span>
+        </div>
+        <h3 class="font-serif font-black text-[17px] leading-[1.4] tracking-wide text-vijnana-text-primary">走出舊有行動模式</h3>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">2027年4月至6月</p>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">16小時</p>
+        <ul class="space-y-1.5 flex-1">
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>強大的行動力</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>強烈的意義感和滿足感</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>對自己和他人心理活動的感知和覺察加強</li>
+        </ul>
+        <button onclick="openModal('modal-stage3')" class="mt-3 w-full py-2.5 rounded bg-vijnana-accent-brown text-white text-[13px] font-medium font-sans tracking-wide hover:opacity-90 transition-opacity">了解更多</button>
+        </div><!-- /p-5 -->
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="stage-card flex flex-col gap-0 transition-all duration-200">
+        <!-- Card image -->
+        <div class="stage-card-img">
+          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-main.webp?v=1778156702907" alt="維持期" loading="lazy" />
+          <div class="img-gradient"></div>
+        </div>
+        <div class="p-5 flex flex-col gap-3 flex-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-6 h-6 rounded-full bg-vijnana-accent-orange/20 text-vijnana-accent-orange text-xs font-bold flex items-center justify-center font-sans">4</span>
+          <span class="font-sans text-[14px] font-black text-vijnana-text-primary tracking-wide">維持期</span>
+        </div>
+        <h3 class="font-serif font-black text-[17px] leading-[1.4] tracking-wide text-vijnana-text-primary">生命的熱情與動力</h3>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">2027年7月至9月</p>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">16小時</p>
+        <ul class="space-y-1.5 flex-1">
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到神聖的喜悅和平靜</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到高度的生命熱情與投入</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>學會順勢而為</li>
+        </ul>
+        <button onclick="openModal('modal-stage4')" class="mt-3 w-full py-2.5 rounded bg-vijnana-accent-brown text-white text-[13px] font-medium font-sans tracking-wide hover:opacity-90 transition-opacity">了解更多</button>
+        </div><!-- /p-5 -->
+      </div>
+
+      <!-- Stage 5 -->
+      <div class="stage-card flex flex-col gap-0 transition-all duration-200">
+        <!-- Card image -->
+        <div class="stage-card-img">
+          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-main.webp?v=1778156736990" alt="重塑期" loading="lazy" />
+          <div class="img-gradient"></div>
+        </div>
+        <div class="p-5 flex flex-col gap-3 flex-1">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-6 h-6 rounded-full bg-vijnana-accent-orange/20 text-vijnana-accent-orange text-xs font-bold flex items-center justify-center font-sans">5</span>
+          <span class="font-sans text-[14px] font-black text-vijnana-text-primary tracking-wide">重塑期</span>
+        </div>
+        <h3 class="font-serif font-black text-[17px] leading-[1.4] tracking-wide text-vijnana-text-primary">自我認同的再超越</h3>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">2027年10月至11月</p>
+        <p class="font-sans text-xs text-vijnana-text-secondary leading-[1.6]">20小時</p>
+        <ul class="space-y-1.5 flex-1">
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>活在當下的力量</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>樂於迎接未知的生命挑戰</li>
+          <li class="flex items-start gap-2 text-[13px] font-serif leading-[1.6] text-vijnana-text-primary"><span class="mt-1 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>開啟心想事成的能量</li>
+        </ul>
+        <button onclick="openModal('modal-stage5')" class="mt-3 w-full py-2.5 rounded bg-vijnana-accent-brown text-white text-[13px] font-medium font-sans tracking-wide hover:opacity-90 transition-opacity">了解更多</button>
+        </div><!-- /p-5 -->
+      </div>
+
+    </div><!-- /cards grid -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     7. TOOLS & RESOURCES (Therapy Benefits Grid)
+════════════════════════════════════════════════════════ -->
+<section class="bg-vijnana-elevated py-12">
+  <div class="custom-container">
+    <h2 class="font-serif font-black tracking-wide text-[22px] md:text-[28px] leading-[1.4] mb-2 text-center">參考書籍及使用工具</h2>
+    <p class="font-sans text-[14px] text-vijnana-text-secondary text-center mb-8 leading-[1.6]">在課程開始前，需完成指定章節的閱讀。</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-vijnana-on-background rounded-lg p-5 flex flex-col gap-2 border border-vijnana-stroke">
+        <span class="text-2xl">📖</span>
+        <p class="font-serif font-black text-[14px] leading-[1.5] text-vijnana-text-primary">《靈魂的第七項修煉》（節錄）</p>
+        <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.5]">指定閱讀書籍，如沒有書本，可透過心地購買。</p>
+      </div>
+      <div class="bg-vijnana-on-background rounded-lg p-5 flex flex-col gap-2 border border-vijnana-stroke">
+        <span class="text-2xl">📖</span>
+        <p class="font-serif font-black text-[14px] leading-[1.5] text-vijnana-text-primary">《覺醒的力量》（節錄）</p>
+        <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.5]">指定閱讀書籍，如沒有書本，可透過心地購買。</p>
+      </div>
+      <div class="bg-vijnana-on-background rounded-lg p-5 flex flex-col gap-2 border border-vijnana-stroke">
+        <span class="text-2xl">🃏</span>
+        <p class="font-serif font-black text-[14px] leading-[1.5] text-vijnana-text-primary">奧修禪卡（中文／英文）</p>
+        <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.5]">需自行購買。</p>
+      </div>
+      <div class="bg-vijnana-on-background rounded-lg p-5 flex flex-col gap-2 border border-vijnana-stroke">
+        <span class="text-2xl">💻</span>
+        <p class="font-serif font-black text-[14px] leading-[1.5] text-vijnana-text-primary">輔助學習工具</p>
+        <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.5]">WhatsApp 群組、網上學習平台（Zoom 課堂記錄）、網上週記。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     8. COURSE STRUCTURE TABLE (New Module)
+════════════════════════════════════════════════════════ -->
+<section id="section-pricing" class="scroll-mt-20 pt-12 pb-8">
+  <div class="custom-container">
+    <h2 class="font-serif font-black tracking-wide text-[26px] md:text-[32px] leading-[1.4] mb-2">課程架構及時間表</h2>
+    <p class="font-serif text-[15px] text-vijnana-text-secondary mb-6 leading-[1.7]">課程包含三大教學形式：</p>
+
+    <!-- 3 format summary -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+      <div class="bg-vijnana-elevated rounded-lg p-5 border border-vijnana-stroke">
+        <div class="font-serif font-black text-[28px] text-vijnana-accent-orange leading-none mb-1">①</div>
+        <p class="font-serif font-black text-[15px] leading-[1.5] text-vijnana-text-primary mb-1">課程教學</p>
+        <p class="font-sans text-[13px] text-vijnana-text-secondary">92小時（固定時間表）</p>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-5 border border-vijnana-stroke">
+        <div class="font-serif font-black text-[28px] text-vijnana-accent-orange leading-none mb-1">②</div>
+        <p class="font-serif font-black text-[15px] leading-[1.5] text-vijnana-text-primary mb-1">小組共學</p>
+        <p class="font-sans text-[13px] text-vijnana-text-secondary">24小時（非固定時間表）</p>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-5 border border-vijnana-stroke">
+        <div class="font-serif font-black text-[28px] text-vijnana-accent-orange leading-none mb-1">③</div>
+        <p class="font-serif font-black text-[15px] leading-[1.5] text-vijnana-text-primary mb-1">個人練習及實踐</p>
+        <p class="font-sans text-[13px] text-vijnana-text-secondary">自主安排</p>
+      </div>
+    </div>
+
+    <!-- Timetable -->
+    <h3 class="font-serif font-black text-[18px] md:text-[22px] leading-[1.4] mb-4">課程教學時間表（共92小時）</h3>
+    <div class="overflow-x-auto rounded-lg border border-vijnana-stroke">
+      <table class="w-full min-w-[700px] text-[13px] md:text-[14px] font-sans">
+        <thead>
+          <tr class="bg-vijnana-accent-brown text-white">
+            <th class="text-left px-4 py-3 font-medium tracking-wide">實踐階段</th>
+            <th class="text-left px-4 py-3 font-medium tracking-wide">日期</th>
+            <th class="text-center px-4 py-3 font-medium tracking-wide">時間</th>
+            <th class="text-center px-4 py-3 font-medium tracking-wide">時數</th>
+            <th class="text-center px-4 py-3 font-medium tracking-wide">形式</th>
+            <th class="text-center px-4 py-3 font-medium tracking-wide">出席要求</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="1">起步期：靈魂使命實踐計劃制定</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2026年12月12日、13日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
+            <td class="px-4 py-3 text-center"><span class="inline-block bg-vijnana-accent-orange/15 text-vijnana-accent-orange text-[11px] font-medium px-2 py-0.5 rounded-full">必修</span></td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">創造期：建立新的自我認同</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年1月9日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年2月13日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年3月13日、14日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
+            <td class="px-4 py-3 text-center"><span class="inline-block bg-vijnana-accent-orange/15 text-vijnana-accent-orange text-[11px] font-medium px-2 py-0.5 rounded-full">必修</span></td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">開拓期：走出舊有行動模式</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年4月10日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年5月8日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年6月5日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">8小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
+            <td class="px-4 py-3 text-center"><span class="inline-block bg-vijnana-accent-orange/15 text-vijnana-accent-orange text-[11px] font-medium px-2 py-0.5 rounded-full">必修</span></td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">維持期：生命的熱情與動力</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年7月10日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年8月7日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年9月4日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">8小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
+            <td class="px-4 py-3 text-center"><span class="inline-block bg-vijnana-accent-orange/15 text-vijnana-accent-orange text-[11px] font-medium px-2 py-0.5 rounded-full">必修</span></td>
+          </tr>
+          <tr class="timetable-row border-b border-vijnana-stroke/50">
+            <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="2">重塑期：自我認同的再超越</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年10月2日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">—</td>
+          </tr>
+          <tr class="timetable-row">
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年11月6日、7日</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
+            <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
+            <td class="px-4 py-3 text-center"><span class="inline-block bg-vijnana-accent-orange/15 text-vijnana-accent-orange text-[11px] font-medium px-2 py-0.5 rounded-full">必修</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 space-y-2">
+      <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.6]">ⓘ 4 小時課程的 Zoom 錄影，可於網上學習平台重溫，僅限教學部分，不含練習環節。</p>
+      <p class="font-sans text-[12px] text-vijnana-text-secondary leading-[1.6]">ⓘ 結業證書頒發資格：所有必修課不可缺席，「課程教學」整體出席率需達到8成，完成指定的課業，可獲頒結業證書。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     9. PRICING CARDS
+════════════════════════════════════════════════════════ -->
+<section class="pt-8 pb-12">
+  <div class="custom-container">
+    <h2 class="font-serif font-black tracking-wide text-[26px] md:text-[32px] leading-[1.4] mb-6">課程收費</h2>
+    <div class="bg-vijnana-elevated rounded-lg p-3 md:p-5">
+      <div class="flex flex-col md:flex-row gap-2 md:gap-3">
+
+        <!-- Super Early Bird -->
+        <div class="flex-1 bg-vijnana-on-background rounded-lg p-4 md:p-6 border-2 border-vijnana-accent-orange flex flex-col items-center gap-2 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-vijnana-accent-orange text-white text-[11px] font-medium font-sans px-3 py-1 rounded-full whitespace-nowrap">超早鳥優惠</span>
+          <p class="font-sans font-medium text-[13px] md:text-[15px] leading-[1.3] tracking-wide text-vijnana-text-secondary text-center mt-2">8月15日前報名</p>
+          <div class="font-sans font-semibold text-[36px] md:text-[42px] leading-none tracking-tight text-vijnana-text-primary text-center mt-1">$29,800</div>
+          <p class="font-sans text-[12px] text-vijnana-text-secondary text-center">每人</p>
+        </div>
+
+        <!-- Early Bird -->
+        <div class="flex-1 bg-vijnana-on-background rounded-lg p-4 md:p-6 border border-vijnana-stroke flex flex-col items-center gap-2 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-vijnana-accent-brown text-white text-[11px] font-medium font-sans px-3 py-1 rounded-full whitespace-nowrap">早鳥優惠</span>
+          <p class="font-sans font-medium text-[13px] md:text-[15px] leading-[1.3] tracking-wide text-vijnana-text-secondary text-center mt-2">10月15日前報名</p>
+          <div class="font-sans font-semibold text-[36px] md:text-[42px] leading-none tracking-tight text-vijnana-text-primary text-center mt-1">$31,800</div>
+          <p class="font-sans text-[12px] text-vijnana-text-secondary text-center">每人</p>
+        </div>
+
+        <!-- Regular -->
+        <div class="flex-1 bg-vijnana-on-background rounded-lg p-4 md:p-6 border border-vijnana-stroke flex flex-col items-center gap-2 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-vijnana-text-secondary text-white text-[11px] font-medium font-sans px-3 py-1 rounded-full whitespace-nowrap">正價</span>
+          <p class="font-sans font-medium text-[13px] md:text-[15px] leading-[1.3] tracking-wide text-vijnana-text-secondary text-center mt-2">10月15日後報名</p>
+          <div class="font-sans font-semibold text-[36px] md:text-[42px] leading-none tracking-tight text-vijnana-text-primary text-center mt-1">$35,800</div>
+          <p class="font-sans text-[12px] text-vijnana-text-secondary text-center">每人</p>
+        </div>
+
+      </div>
+      <p class="font-sans text-[12px] text-vijnana-text-secondary mt-4 leading-[1.6]">ⓘ 課程只接受轉數快、銀行轉帳或現金付款；如無法透過以上付款方法，請聯絡我們另行處理。</p>
+    </div>
+
+    <!-- Enrollment criteria - Noto Sans with elevated background -->
+    <div class="mt-10 bg-vijnana-elevated rounded-lg p-5 md:p-8">
+      <h3 class="font-sans font-black text-[20px] md:text-[24px] leading-[1.4] mb-4 text-vijnana-text-primary">課程報讀資格</h3>
+      <div class="space-y-3 font-sans text-[15px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+        <p>1）完成「氣功及冥想自療證書課程」初階及進階的學員；（如果你想報讀課程，但尚未完成以上課程，只需要在12月開課前完成便可，詳細時間表及安排可以 WhatsApp 我們查詢）</p>
+        <p>2）或者完成了 Mei Leung 老師至少一個私人療癒課程的學員。</p>
+      </div>
+      <h3 class="font-sans font-black text-[20px] md:text-[24px] leading-[1.4] mt-8 mb-4 text-vijnana-text-primary">報讀方法</h3>
+      <div class="space-y-3 font-sans text-[15px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+        <p>1）符合報讀資格的學員，可填寫 Google Form 直接報名。</p>
+        <p>2）未符合報讀資格，又想參加課程，請填寫報名表，我們會聯絡你，處理報名事宜，及安排補讀前期準備課程（「氣功及冥想自療證書課程」初階及進階，或 Mei Leung 老師至少一個私人療癒課程）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     10. FAQ ACCORDION
+════════════════════════════════════════════════════════ -->
+<section id="section-faq" class="scroll-mt-20 bg-vijnana-elevated py-12">
+  <div class="custom-container">
+    <h2 class="font-serif font-black tracking-wide text-[26px] md:text-[32px] leading-[1.4] mb-8">常見問題</h2>
+    <div class="max-w-3xl space-y-0 divide-y divide-vijnana-stroke">
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">這個課程適合我嗎？我沒有任何靈性修行基礎。</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">此課程需要完成「氣功及冥想自療證書課程」初階及進階，或至少一個 Mei Leung 老師的私人療癒課程作為基礎。若你尚未完成，只需在2026年12月開課前完成便可。如有疑問，歡迎 WhatsApp 我們查詢。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">課程為期一年，如果中途因事缺席怎麼辦？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">結業證書頒發要求是：所有必修課不可缺席，「課程教學」整體出席率需達到8成。4小時的 Zoom 課程有錄影可於網上學習平台重溫（僅限教學部分，不含練習環節）。如有特殊情況，請提前聯絡我們商議安排。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">課程以廣東話還是普通話授課？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">課程以廣東話授課。如有其他語言需求，歡迎 WhatsApp 我們查詢。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">小組共學是如何安排的？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">小組共學共24小時，時間表非固定，由各小組成員自行協調安排。我們會在課程開始後，協助分配小組及提供學習指引。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">上課地點在哪裡？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">實體課於心地 Vijnana 銅鑼灣中心舉行。Zoom 課程可於任何地方參與，只需確保網絡穩定及環境安靜即可。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">完成課程後可以獲得什麼認證？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">符合出席要求（必修課全勤，整體出席率達8成）並完成指定課業的學員，可獲頒心地 Vijnana 結業證書。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">課程可以分期付款嗎？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">課程只接受轉數快、銀行轉帳或現金付款。如需特別付款安排，請 WhatsApp 我們查詢，我們會盡力協助。</p>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <button onclick="toggleFaq(this)" class="w-full text-left flex items-center justify-between gap-4">
+          <h3 class="font-serif font-black text-[17px] md:text-[20px] leading-[1.4] text-vijnana-text-primary">報名後如需取消，可以退款嗎？</h3>
+          <svg class="faq-chevron w-7 h-7 text-vijnana-text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p class="font-serif text-[14px] md:text-[15px] leading-[1.8] tracking-wide text-vijnana-text-secondary pt-4">退款政策詳情請 WhatsApp 我們查詢。我們會根據報名時間及課程安排，與你商議最合適的處理方式。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     11. WHATSAPP CTA BANNER
+════════════════════════════════════════════════════════ -->
+<section class="bg-vijnana-accent-brown py-10">
+  <div class="custom-container">
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-center justify-between">
+      <div class="flex flex-col lg:flex-row gap-5 lg:gap-8 items-center lg:items-start">
+        <div class="flex-shrink-0">
+          <img alt="WhatsApp" class="w-16 h-16 lg:w-20 lg:h-20" src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/whatsapp-icon.svg?v=1778137584898" />
+        </div>
+        <div class="text-center lg:text-left">
+          <h3 class="font-serif font-black text-[20px] md:text-[24px] leading-[1.4] text-white mb-2">有任何問題？立即 WhatsApp 我們</h3>
+          <p class="font-sans text-[14px] text-white/80 leading-[1.6]">我們很樂意解答你對課程的任何疑問，陪伴你踏出第一步。</p>
+        </div>
+      </div>
+      <a href="https://wa.me/85262886826?text=您好，我想查詢靈魂使命探索課程" target="_blank" rel="noopener noreferrer"
+         class="flex-shrink-0 inline-flex items-center justify-center bg-white text-vijnana-accent-brown px-8 h-12 rounded text-[15px] font-medium tracking-wide font-sans hover:bg-vijnana-on-background transition-colors duration-300 whitespace-nowrap">
+        立即 WhatsApp 查詢
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     STAGE MODALS
+════════════════════════════════════════════════════════ -->
+
+<!-- Modal Stage 1 -->
+<div id="modal-stage1" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'modal-stage1')">
+  <div class="modal-box">
+    <!-- Modal image -->
+    <div class="modal-hero-img">
+      <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-popup.webp?v=1778156607233" alt="起步期" />
+      <div class="img-gradient"></div>
+    </div>
+    <button onclick="closeModal('modal-stage1')" class="absolute top-4 right-4 text-white hover:opacity-80 transition-colors drop-shadow-md">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <span class="font-sans text-xs text-vijnana-accent-orange font-medium">起步期 · 第一階段</span>
+    <h2 class="font-serif font-black text-[22px] leading-[1.4] tracking-wide text-vijnana-text-primary mt-1 mb-4">靈魂使命實踐計劃制定</h2>
+    <p class="font-sans text-[12px] text-vijnana-text-secondary mb-5">2026年12月12–13日 · 16小時 · 實體課（必修）</p>
+    <div class="space-y-4 font-serif text-[14px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>此階段課程，會助你從靈性感知層面，連結你的靈魂能量，找到我們的靈魂特質及使命。再通過不同的方法，整合你的靈魂使命與個人生命歷程、個性、特質，再落地到你實際的生命狀況及條件，制定出你的靈魂使命實踐計劃，是一個由虛到實的過程。</p>
+      <div>
+        <p class="font-black mb-2">此階段可能面對的課題：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>看不到自己的盲點，過份高大空，無法落地實踐，無法走出第一步</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>過份自我懷疑，恐懼自己無法完成內心所渴進，或無法勝此大任，障礙我們前進</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>有願力，但沒有方法，亦不了解自己的個性、特質、長處，被舊有思維模式和經驗局限，看不見身邊可用資源和空間</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>有願力、有資源、有空間，但卻總是無法推進，不知內在卡在哪裡，亦看不清方向</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">此階段需要的助力：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-brown flex-shrink-0"></span>需要整合的方法，助我們撥開迷霧，看見路徑</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-brown flex-shrink-0"></span>需要面對自己，承認自己，信任自己的勇氣</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-brown flex-shrink-0"></span>需要承擔的勇氣，為自己的生命下決定，走上自己的路</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">練習範圍：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>靈魂能量連結</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>自我覺察與分析</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>信念能量轉化練習</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>練習及實踐週記</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>小組共學</li>
+        </ul>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-4">
+        <p class="font-black mb-2">階段性成果：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>開啟新的視野</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>看見自己生命的豐盛資源</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>制定具體靈魂實踐方案</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到生命的活力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Stage 2 -->
+<div id="modal-stage2" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'modal-stage2')">
+  <div class="modal-box">
+    <!-- Modal image -->
+    <div class="modal-hero-img">
+      <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-popup.webp?v=1778156643517" alt="創造期" />
+      <div class="img-gradient"></div>
+    </div>
+    <button onclick="closeModal('modal-stage2')" class="absolute top-4 right-4 text-white hover:opacity-80 transition-colors drop-shadow-md">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <span class="font-sans text-xs text-vijnana-accent-orange font-medium">創造期 · 第二階段</span>
+    <h2 class="font-serif font-black text-[22px] leading-[1.4] tracking-wide text-vijnana-text-primary mt-1 mb-4">建立新的自我認同</h2>
+    <p class="font-sans text-[12px] text-vijnana-text-secondary mb-5">2027年1月至3月 · 24小時</p>
+    <div class="space-y-4 font-serif text-[14px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>當我們邁出第一步，開始嘗試創造一些東西，障礙和困難就會到訪。這些困難，都是我們在改變過程必然面對的自我懷疑和自我否定，是舊有自我認同、自我意識的綑綁與局限。</p>
+      <p>我們需要深入整合這些局限的生命能量，從表意識到潛意識，「破」除你的舊有自我認同，超越自我定義的界線，重建自己內在的信任感。</p>
+      <div>
+        <p class="font-black mb-2">此階段可能面對的課題：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>可能產生挫敗感，害怕失敗，害怕失望</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>可能感受到周圍的人／世界的打擊，不斷地挑戰你的決心</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>起步行動後，即陷入懷疑與不相信，很害怕面對結果</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>急於見到成效，容易亂了陣腳，找不到行動的方向</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">練習範圍：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>奧修禪卡應用</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>能量卡點清理</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>內在指引連結與解讀</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>練習及實踐週記</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>小組共學</li>
+        </ul>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-4">
+        <p class="font-black mb-2">階段性成果：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>超越挫敗帶來力量感</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>學會依據內在指引行動</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>覺察力和感知力再提升</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Stage 3 -->
+<div id="modal-stage3" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'modal-stage3')">
+  <div class="modal-box">
+    <!-- Modal image -->
+    <div class="modal-hero-img">
+      <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-popup.webp?v=1778156685057" alt="開拓期" />
+      <div class="img-gradient"></div>
+    </div>
+    <button onclick="closeModal('modal-stage3')" class="absolute top-4 right-4 text-white hover:opacity-80 transition-colors drop-shadow-md">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <span class="font-sans text-xs text-vijnana-accent-orange font-medium">開拓期 · 第三階段</span>
+    <h2 class="font-serif font-black text-[22px] leading-[1.4] tracking-wide text-vijnana-text-primary mt-1 mb-4">走出舊有行動模式</h2>
+    <p class="font-sans text-[12px] text-vijnana-text-secondary mb-5">2027年4月至6月 · 16小時</p>
+    <div class="space-y-4 font-serif text-[14px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>此一時期，你需要探索新的可能性，以新的路徑來創造新的生命狀態。在能量層面，你需要開啟你的內在強大的創造力，整合表意識與潛意識，讓我們的內在動力與外在行動慢慢地靠向一致，內外合一，我們便可將內在的創造力化為行動力。</p>
+      <div>
+        <p class="font-black mb-2">此階段可能面對的課題：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>潛意識對自己的價值感，對人、對世界的不信任感，會再次浮現</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>如何在各種機會和資源中，建立起自己的信心，學會依心選擇</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>信心動搖，便很容易回到舊路、舊模式</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">練習範圍：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>奧修禪卡應用深化</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>身體動能啟動</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>整合創化能量</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>心理投射覺察及練習</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>練習及實踐週記</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>小組共學</li>
+        </ul>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-4">
+        <p class="font-black mb-2">階段性成果：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>強大的行動力</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>強烈的意義感和滿足感</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>對自己和他人心理活動的感知和覺察加強</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>身體的能量更暢通</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Stage 4 -->
+<div id="modal-stage4" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'modal-stage4')">
+  <div class="modal-box">
+    <!-- Modal image -->
+    <div class="modal-hero-img">
+      <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-popup.webp?v=1778156720250" alt="維持期" />
+      <div class="img-gradient"></div>
+    </div>
+    <button onclick="closeModal('modal-stage4')" class="absolute top-4 right-4 text-white hover:opacity-80 transition-colors drop-shadow-md">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <span class="font-sans text-xs text-vijnana-accent-orange font-medium">維持期 · 第四階段</span>
+    <h2 class="font-serif font-black text-[22px] leading-[1.4] tracking-wide text-vijnana-text-primary mt-1 mb-4">生命的熱情與動力</h2>
+    <p class="font-sans text-[12px] text-vijnana-text-secondary mb-5">2027年7月至9月 · 16小時</p>
+    <div class="space-y-4 font-serif text-[14px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>任何創造的過程，都會出現倦怠期，走過開創期的興奮與新鮮，我們可能會進入平緩發展期，這時期考驗的是我們維持的生命能量，正所謂「創業容易守業難」，指的就是維持的能量。</p>
+      <p>維持期，在重複性的行動中，我們很容易再次陷入自我懷疑中，失去耐心和決心。這時期，如何在創造中，學習從結果導向的執著，轉向享受創造本身的喜悅，順應生命之流，是我們維持熱情與動力的關鍵。</p>
+      <div>
+        <p class="font-black mb-2">此階段可能面對的課題：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>容易迷失，有時會陷入後悔之中，懷疑自己是否走錯了路</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>遇到創造瓶頸，可能會出現怎樣都找不對方向／方法的感覺</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>靈性上，生生世世的業力約束，都會在此時期呈現，是超越的關鍵期</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">練習範圍：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>連結宇宙之愛力</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>交託與臣服</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>心理投射覺察及練習（深化）</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>練習及實踐週記</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>小組共學</li>
+        </ul>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-4">
+        <p class="font-black mb-2">階段性成果：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到神聖的喜悅和平靜</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>感受到高度的生命熱情與投入</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>能運用更高的生命能量</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>學會順勢而為</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Stage 5 -->
+<div id="modal-stage5" class="modal-backdrop" onclick="closeModalOnBackdrop(event, 'modal-stage5')">
+  <div class="modal-box">
+    <!-- Modal image -->
+    <div class="modal-hero-img">
+      <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-popup.webp?v=1778156752976" alt="重塑期" />
+      <div class="img-gradient"></div>
+    </div>
+    <button onclick="closeModal('modal-stage5')" class="absolute top-4 right-4 text-white hover:opacity-80 transition-colors drop-shadow-md">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <span class="font-sans text-xs text-vijnana-accent-orange font-medium">重塑期 · 第五階段</span>
+    <h2 class="font-serif font-black text-[22px] leading-[1.4] tracking-wide text-vijnana-text-primary mt-1 mb-4">自我認同的再超越</h2>
+    <p class="font-sans text-[12px] text-vijnana-text-secondary mb-5">2027年10月至11月 · 20小時</p>
+    <div class="space-y-4 font-serif text-[14px] leading-[1.8] tracking-wide text-vijnana-text-primary">
+      <p>伴隨著維持期的超越，我們會對生命的法則有更深刻的體會，亦對自我有更深認識，看見自己的力量所在，亦較能坦然面對自己的不足。我們較能順流而行，能集中能量，聚焦內心真正渴求，很多時候都能心想事成。</p>
+      <p>這個階段最大的障礙是，我們以為到達了，執著於「不變」。靈魂的渴求，是活出我們的最高版本，以我們的實踐，來體驗生命的無限可能性，來發揮自己的無限潛能。</p>
+      <div>
+        <p class="font-black mb-2">此階段可能面對的課題：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>伴隨著自己信心增強，有可能過度自信與自滿，看不見自己更深層和微妙的盲點</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>我們無法捨去，不敢相信自己可以更偉大</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>可能為自己創造出新的舒適區，局限自我</li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black mb-2">練習範圍：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>生命回溯練習</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>靈魂願力重整</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>練習及實踐週記</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-stroke flex-shrink-0"></span>小組共學</li>
+        </ul>
+      </div>
+      <div class="bg-vijnana-elevated rounded-lg p-4">
+        <p class="font-black mb-2">階段性成果：</p>
+        <ul class="space-y-1.5 pl-4">
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>活在當下的力量</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>自在與輕鬆</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>樂於迎接未知的生命挑戰</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>迎來更大的生命助力</li>
+          <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-vijnana-accent-orange flex-shrink-0"></span>開啟心想事成的能量</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════ -->
+<script>
+  // ── Hero question animation ──
+  const questions = [
+    '你是誰？',
+    '你是一個怎樣的人？你的個性、特質、特長是什麼？',
+    '你想成為一個怎樣的人？你的理想和願景是什麼？',
+    '你該做怎樣的事，來完成自己的願景？',
+    '你想如何影響身邊人及世界？',
+    '此刻障礙著你的是甚麼？',
+    '你為什麼在看這個課程？你想得到什麼？',
+  ];
+  let qi = 0;
+  const qEl = document.getElementById('heroQuestion');
+  function cycleQuestion() {
+    qEl.style.animation = 'none';
+    qEl.textContent = questions[qi];
+    qEl.offsetHeight; // reflow
+    qEl.style.animation = 'fadeSlideUp 3.5s ease-in-out forwards';
+    qi = (qi + 1) % questions.length;
+  }
+  cycleQuestion();
+  setInterval(cycleQuestion, 3600);
+
+  // ── Sticky nav active state ──
+  const tabLinks = document.querySelectorAll('.tab-link');
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      tabLinks.forEach(l => {
+        l.classList.remove('tab-active', 'text-vijnana-text-primary');
+        l.classList.add('text-vijnana-text-secondary');
+      });
+      link.classList.add('tab-active', 'text-vijnana-text-primary');
+      link.classList.remove('text-vijnana-text-secondary');
+    });
+  });
+
+  // ── FAQ accordion ──
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const chevron = btn.querySelector('.faq-chevron');
+    const isOpen = answer.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('open'));
+    if (!isOpen) {
+      answer.classList.add('open');
+      chevron.classList.add('open');
+    }
+  }
+
+  // ── Modal ──
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOnBackdrop(event, id) {
+    if (event.target === document.getElementById(id)) closeModal(id);
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-backdrop.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+
+<!-- ════════════════════════════════════════════════════════
+     STICKY BOTTOM CTA BAR (appears after scrolling past hero)
+════════════════════════════════════════════════════════ -->
+<div id="sticky-bottom-bar">
+  <a href="https://wa.me/85262886826?text=您好，我想查詢靈魂使命探索課程" target="_blank" rel="noopener noreferrer">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.523 5.845L0 24l6.335-1.498A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.003-1.374l-.36-.213-3.76.888.936-3.655-.234-.376A9.793 9.793 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+    WhatsApp 查詢
+  </a>
+  <a href="#" target="_blank" rel="noopener noreferrer">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    填寫報名表格
+  </a>
+</div>
+
+<script>
+  // Sticky bottom bar: show after hero section scrolled past
+  (function() {
+    var bar = document.getElementById('sticky-bottom-bar');
+    var hero = document.querySelector('section');
+    function onScroll() {
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
