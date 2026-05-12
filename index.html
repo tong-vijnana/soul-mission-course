@@ -121,6 +121,11 @@
   <!-- Gradient overlay -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#FFF8F0] via-[#FFF8F0]/80 to-transparent"></div>
 
+  <!-- Logo top-left -->
+  <div class="absolute top-4 left-4 lg:left-8 z-20">
+    <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/vijnana_logo_300_150-1.png" alt="心地 Vijnana" class="h-10 md:h-12 w-auto object-contain" />
+  </div>
+
   <!-- Hero content -->
   <div class="relative h-full flex flex-col justify-end pb-4 lg:pb-8 z-10">
     <div class="custom-container px-5 pt-12 md:pt-0">
@@ -153,8 +158,12 @@
 ════════════════════════════════════════════════════════ -->
 <div class="bg-vijnana-on-background border-b border-vijnana-stroke sticky z-20" style="top:0">
   <nav aria-label="課程分頁" class="w-full" role="tablist">
-    <div class="custom-container lg:px-0">
-      <ul class="flex justify-start lg:justify-center whitespace-nowrap overflow-x-auto no-scrollbar lg:overflow-x-visible px-4 lg:px-0" role="tablist">
+    <div class="custom-container lg:px-0 flex items-center">
+      <!-- Logo in nav -->
+      <a href="https://www.vijnana.hk" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 pl-4 lg:pl-0 pr-3">
+        <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/vijnana_logo_300_150-1.png" alt="心地 Vijnana" class="h-8 w-auto object-contain" />
+      </a>
+      <ul class="flex flex-1 justify-start lg:justify-center whitespace-nowrap overflow-x-auto no-scrollbar lg:overflow-x-visible px-2 lg:px-0" role="tablist">
         <li class="relative flex-shrink-0 text-center min-w-[100px] lg:flex-1">
           <a href="#section-about" class="tab-link tab-active relative block w-full px-1 md:px-4 lg:px-6 py-5 text-center text-base leading-[1.4] tracking-wide font-black font-serif transition-colors duration-300 focus:outline-none text-vijnana-text-primary">簡介</a>
         </li>
@@ -802,6 +811,9 @@
     </div>
   </div>
 </section>
+
+<!-- Bottom padding to prevent sticky bar from covering last section -->
+<div class="h-20"></div>
 
 <!-- ════════════════════════════════════════════════════════
      STAGE MODALS
