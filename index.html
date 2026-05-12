@@ -96,8 +96,8 @@
     .modal-hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .modal-hero-img .img-gradient { pointer-events: none; position: absolute; inset-x: 0; bottom: 0; height: 80px; background: linear-gradient(to top, #FFF8F0, transparent); }
     /* ── Sticky bottom bar ── */
-    #sticky-bottom-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; box-shadow: 0 -2px 16px rgba(60,30,10,0.18); }
-    #sticky-bottom-bar.visible { display: flex; }
+    #sticky-bottom-bar { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; box-shadow: 0 -2px 16px rgba(60,30,10,0.18); opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    #sticky-bottom-bar.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
     #sticky-bottom-bar a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 17.6px 8px; font-family: 'Noto Sans TC', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; text-decoration: none; transition: opacity 0.2s; }
     #sticky-bottom-bar a:hover { opacity: 0.88; }
     #sticky-bottom-bar a:first-child { background: rgb(92, 61, 46); color: rgb(251, 246, 240); border-right: 1px solid rgba(255,255,255,0.15); }
@@ -452,77 +452,77 @@
         <tbody>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
             <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="1">起步期：靈魂使命實踐計劃制定</td>
-            <td class="px-4 py-3 text-vijnana-text-secondary">2026年12月12日、13日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2026年12月12日（六）、13日（日）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
             <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">創造期：建立新的自我認同</td>
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年1月9日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年1月9日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年2月13日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年2月13日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年3月13日、14日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年3月13日（六）、14日（日）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
             <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">開拓期：走出舊有行動模式</td>
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年4月10日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年4月10日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年5月8日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年5月8日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年6月5日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年6月5日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">8小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
             <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="3">維持期：生命的熱情與動力</td>
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年7月10日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年7月10日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年8月7日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年8月7日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年9月4日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年9月4日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">8小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
           </tr>
           <tr class="timetable-row border-b border-vijnana-stroke/50">
             <td class="px-4 py-3 font-serif font-black text-vijnana-text-primary" rowspan="2">重塑期：自我認同的再超越</td>
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年10月2日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年10月2日（六）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">14:30–18:30</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">4小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體或 Zoom</td>
           </tr>
           <tr class="timetable-row">
-            <td class="px-4 py-3 text-vijnana-text-secondary">2027年11月6日、7日</td>
+            <td class="px-4 py-3 text-vijnana-text-secondary">2027年11月6日（六）、7日（日）</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">10:00–18:00</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">16小時</td>
             <td class="px-4 py-3 text-center text-vijnana-text-secondary">實體課</td>
