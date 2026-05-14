@@ -1258,8 +1258,10 @@
   #ghl-modal-iframe {
     display: block;
     width: 100%;
+    min-height: 1469px;
     height: 1469px;
     border: none;
+    overflow: hidden;
   }
 </style>
 <div id="ghl-modal-overlay">
@@ -1280,7 +1282,7 @@
         data-layout-iframe-id="ghl-modal-iframe"
         data-form-id="SluBRxAbJ3Bwg9ceCPj9"
         title="prospect form | 靈魂使命探索課程"
-        loading="lazy">
+>
     </iframe>
   </div>
 </div>
@@ -1292,7 +1294,14 @@
     var box = document.getElementById('ghl-modal-box');
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    if (box) box.scrollTop = 0;
+    // Scroll both the box and the window to top so form is visible
+    if (box) { box.scrollTop = 0; }
+    window.scrollTo(0, 0);
+    // Force iframe height in case GHL resize hasn't fired
+    var iframe = document.getElementById('ghl-modal-iframe');
+    if (iframe && (!iframe.style.height || iframe.style.height === '0px')) {
+      iframe.style.height = '1469px';
+    }
   }
   function closeGHLModal() {
     document.getElementById('ghl-modal-overlay').style.display = 'none';
