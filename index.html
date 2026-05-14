@@ -1258,10 +1258,17 @@
   #ghl-modal-iframe {
     display: block;
     width: 100%;
-    min-height: 1469px;
+    min-height: 300px;
     height: 1469px;
     border: none;
     overflow: hidden;
+    transition: height 0.4s ease;
+  }
+  /* On mobile, cap modal height and let form scroll inside */
+  @media (max-width: 640px) {
+    #ghl-modal-box {
+      max-height: 88vh;
+    }
   }
 </style>
 <div id="ghl-modal-overlay">
@@ -1331,6 +1338,65 @@
   });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeGHLModal();
+  });
+
+  // Listen for GHL postMessage events to resize iframe after submission
+  window.addEventListener('message', function(event) {
+    // GHL sends height updates via postMessage from the form iframe
+    if (!event.data) return;
+    var data = event.data;
+
+    // GHL form submission confirmation: height drops significantly
+    // Also handle explicit form-submitted event from GHL
+    if (typeof data === 'object') {
+      // GHL resize message
+      if (data.type === 'resize' || data.action === 'resize') {
+        var newHeight = data.height || data.value;
+        if (newHeight) {
+          var iframe = document.getElementById('ghl-modal-iframe');
+          if (iframe) {
+            iframe.style.height = newHeight + 'px';
+            iframe.style.minHeight = newHeight + 'px';
+          }
+        }
+      }
+      // GHL form submitted event
+      if (data.type === 'form-submitted' || data.action === 'form-submitted' ||
+          data.event === 'form-submitted' || data.formSubmitted) {
+        var iframe = document.getElementById('ghl-modal-iframe');
+        if (iframe) {
+          // Shrink to compact height to show only the thank-you message
+          iframe.style.height = '320px';
+          iframe.style.minHeight = '320px';
+          // Also scroll modal box to top so thank-you is visible
+          var box = document.getElementById('ghl-modal-box');
+          if (box) box.scrollTop = 0;
+        }
+      }
+    }
+
+    // Handle string-format messages from GHL
+    if (typeof data === 'string') {
+      try {
+        var parsed = JSON.parse(data);
+        if (parsed.type === 'form-submitted' || parsed.action === 'form-submitted') {
+          var iframe = document.getElementById('ghl-modal-iframe');
+          if (iframe) {
+            iframe.style.height = '320px';
+            iframe.style.minHeight = '320px';
+            var box = document.getElementById('ghl-modal-box');
+            if (box) box.scrollTop = 0;
+          }
+        }
+        if ((parsed.type === 'resize' || parsed.action === 'resize') && parsed.height) {
+          var iframe = document.getElementById('ghl-modal-iframe');
+          if (iframe) {
+            iframe.style.height = parsed.height + 'px';
+            iframe.style.minHeight = parsed.height + 'px';
+          }
+        }
+      } catch(e) {}
+    }
   });
 </script>
 </body>
