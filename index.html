@@ -124,7 +124,8 @@
     /* ── Stage card ── */
     .stage-card { border: 1px solid #D9CDBF; border-radius: 8px; background: #FFF8F0; overflow: hidden; }
     .stage-card:hover { border-color: #614835; }
-    .stage-card-img { position: relative; width: 100%; overflow: hidden; aspect-ratio: 4 / 5.4; }
+    .stage-card-img { position: relative; width: 100%; overflow: hidden; aspect-ratio: 16 / 9; }
+    @media (min-width: 640px) { .stage-card-img { aspect-ratio: 4 / 5.4; } }
     .stage-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .stage-card-img .img-gradient { pointer-events: none; position: absolute; inset-x: 0; bottom: 0; height: 80px; background: linear-gradient(to top, #FFF8F0, transparent); }
     /* ── Modal image ── */
@@ -303,7 +304,11 @@
       <div class="stage-card flex flex-col gap-0 transition-all duration-200 cursor-pointer" onclick="openModal('modal-stage1')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openModal('modal-stage1')">
         <!-- Card image -->
         <div class="stage-card-img">
-          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-main.webp?v=1778156580569" alt="起步期" loading="lazy" />
+          <picture>
+            <source media="(max-width: 639px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-popup.webp?v=1778156607233" />
+            <source media="(min-width: 640px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-main.webp?v=1778156580569" />
+            <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage1-main.webp?v=1778156580569" alt="起步期" loading="lazy" />
+          </picture>
           <div class="img-gradient"></div>
         </div>
         <div class="p-5 flex flex-col gap-3 flex-1">
@@ -328,7 +333,11 @@
       <div class="stage-card flex flex-col gap-0 transition-all duration-200 cursor-pointer" onclick="openModal('modal-stage2')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openModal('modal-stage2')">
         <!-- Card image -->
         <div class="stage-card-img">
-          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-main.webp?v=1778156624908" alt="創造期" loading="lazy" />
+          <picture>
+            <source media="(max-width: 639px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-popup.webp?v=1778156643517" />
+            <source media="(min-width: 640px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-main.webp?v=1778156624908" />
+            <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage2-main.webp?v=1778156624908" alt="創造期" loading="lazy" />
+          </picture>
           <div class="img-gradient"></div>
         </div>
         <div class="p-5 flex flex-col gap-3 flex-1">
@@ -352,7 +361,11 @@
       <div class="stage-card flex flex-col gap-0 transition-all duration-200 cursor-pointer" onclick="openModal('modal-stage3')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openModal('modal-stage3')">
         <!-- Card image -->
         <div class="stage-card-img">
-          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-main.webp?v=1778156667258" alt="開拓期" loading="lazy" />
+          <picture>
+            <source media="(max-width: 639px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-popup.webp?v=1778156685057" />
+            <source media="(min-width: 640px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-main.webp?v=1778156667258" />
+            <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage3-main.webp?v=1778156667258" alt="開拓期" loading="lazy" />
+          </picture>
           <div class="img-gradient"></div>
         </div>
         <div class="p-5 flex flex-col gap-3 flex-1">
@@ -376,7 +389,11 @@
       <div class="stage-card flex flex-col gap-0 transition-all duration-200 cursor-pointer" onclick="openModal('modal-stage4')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openModal('modal-stage4')">
         <!-- Card image -->
         <div class="stage-card-img">
-          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-main.webp?v=1778156702907" alt="維持期" loading="lazy" />
+          <picture>
+            <source media="(max-width: 639px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-popup.webp?v=1778156720250" />
+            <source media="(min-width: 640px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-main.webp?v=1778156702907" />
+            <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage4-main.webp?v=1778156702907" alt="維持期" loading="lazy" />
+          </picture>
           <div class="img-gradient"></div>
         </div>
         <div class="p-5 flex flex-col gap-3 flex-1">
@@ -400,7 +417,11 @@
       <div class="stage-card flex flex-col gap-0 transition-all duration-200 cursor-pointer" onclick="openModal('modal-stage5')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openModal('modal-stage5')">
         <!-- Card image -->
         <div class="stage-card-img">
-          <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-main.webp?v=1778156736990" alt="重塑期" loading="lazy" />
+          <picture>
+            <source media="(max-width: 639px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-popup.webp?v=1778156752976" />
+            <source media="(min-width: 640px)" srcset="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-main.webp?v=1778156736990" />
+            <img src="https://payload-3-dev.s3.ap-east-1.amazonaws.com/stage5-main.webp?v=1778156736990" alt="重塑期" loading="lazy" />
+          </picture>
           <div class="img-gradient"></div>
         </div>
         <div class="p-5 flex flex-col gap-3 flex-1">
