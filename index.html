@@ -1217,13 +1217,29 @@
 </script>
 
 
-<!-- GoHighLevel Popup Form -->
+<!-- GoHighLevel Popup Form — triggered by button click only -->
+<!-- Hidden trigger element that GHL's script binds to -->
+<span
+    id="ghl-form-trigger"
+    data-layout="{'id':'POPUP'}"
+    data-trigger-type="onClick"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="prospect form | 靈魂使命探索課程"
+    data-height="1407"
+    data-layout-iframe-id="popup-SluBRxAbJ3Bwg9ceCPj9"
+    data-form-id="SluBRxAbJ3Bwg9ceCPj9"
+    style="display:none">
+</span>
 <iframe
     src="https://api.leadconnectorhq.com/widget/form/SluBRxAbJ3Bwg9ceCPj9"
     style="display:none;width:100%;height:100%;border:none;border-radius:10px"
     id="popup-SluBRxAbJ3Bwg9ceCPj9"
     data-layout="{'id':'POPUP'}"
-    data-trigger-type="alwaysShow"
+    data-trigger-type="onClick"
     data-trigger-value=""
     data-activation-type="alwaysActivated"
     data-activation-value=""
@@ -1239,18 +1255,10 @@
 <script>
   function openGHLForm(e) {
     if (e) e.preventDefault();
-    // GHL form_embed.js exposes a global trigger — call it directly
-    if (window.LeadConnector && window.LeadConnector.openPopup) {
-      window.LeadConnector.openPopup('SluBRxAbJ3Bwg9ceCPj9');
-    } else {
-      // Fallback: show the iframe and dispatch the event GHL listens for
-      var iframe = document.getElementById('popup-SluBRxAbJ3Bwg9ceCPj9');
-      if (iframe) {
-        iframe.style.display = 'block';
-        document.dispatchEvent(new CustomEvent('lc-popup-open', {
-          detail: { formId: 'SluBRxAbJ3Bwg9ceCPj9' }
-        }));
-      }
+    // Simulate a click on the hidden GHL trigger element
+    var trigger = document.getElementById('ghl-form-trigger');
+    if (trigger) {
+      trigger.click();
     }
   }
 </script>
