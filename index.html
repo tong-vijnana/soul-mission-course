@@ -144,6 +144,35 @@
 <body>
 
 <!-- ════════════════════════════════════════════════════════
+     ANNOUNCEMENT BAR — Briefing Session
+════════════════════════════════════════════════════════ -->
+<div id="announcement-bar" class="w-full sticky top-0 z-30" style="background:#5C3D2E;">
+  <div class="custom-container px-4 py-2 flex items-center justify-between gap-3">
+    <p class="text-white text-[12px] md:text-[13px] font-sans leading-snug flex-1 text-center md:text-left">
+      <span class="mr-1">🗓</span>
+      <span class="font-semibold">免費簡介會</span>
+      <span class="mx-1 opacity-60">｜</span>
+      2026年6月13日（六）13:00–14:00
+      <span class="mx-1 opacity-60">｜</span>
+      實體 / 網上均可參加
+      <span class="mx-2 opacity-60">·</span>
+      WhatsApp 登記 →
+      <a href="https://wa.me/85262886826?text=%E6%88%91%E6%83%B3%E5%A0%B1%E5%90%8D%E3%80%8C%E9%9D%88%E9%AD%82%E4%BD%BF%E5%91%BD%E6%8E%A2%E7%B4%A2%E8%AA%B2%E7%A8%8B%E3%80%8D%E7%B0%A1%E4%BB%8B%E6%9C%83"
+         target="_blank" rel="noopener noreferrer"
+         class="underline underline-offset-2 font-semibold hover:opacity-80 transition-opacity ml-1"
+         style="color:#F5C97A;">
+        +852 6288 6826
+      </a>
+    </p>
+    <button id="announcement-close"
+            aria-label="關閉公告"
+            onclick="document.getElementById('announcement-bar').style.display='none'; document.getElementById('sticky-nav').style.top='0';"
+            class="flex-shrink-0 text-white opacity-60 hover:opacity-100 transition-opacity text-lg leading-none ml-2">
+      ✕
+    </button>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════════
      1. HERO SECTION
 ════════════════════════════════════════════════════════ -->
 <section class="relative w-full min-h-[600px] aspect-[2/3] md:aspect-[16/9] bg-vijnana-elevated overflow-hidden rounded-none lg:rounded-b-lg -mb-6">
@@ -195,7 +224,7 @@
 <!-- ════════════════════════════════════════════════════════
      2. STICKY TAB NAVIGATION
 ════════════════════════════════════════════════════════ -->
-<div class="bg-vijnana-on-background border-b border-vijnana-stroke sticky z-20" style="top:0">
+<div id="sticky-nav" class="bg-vijnana-on-background border-b border-vijnana-stroke sticky z-20" style="top:0">
   <nav aria-label="課程分頁" class="w-full" role="tablist">
     <div class="custom-container lg:px-0 flex items-center">
       <!-- Logo in nav -->
@@ -1454,6 +1483,23 @@
       });
     });
     observer.observe(iframe, { attributes: true, attributeFilter: ['data-height', 'style'] });
+  })();
+</script>
+
+<script>
+  (function() {
+    function updateNavTop() {
+      var bar = document.getElementById('announcement-bar');
+      var nav = document.getElementById('sticky-nav');
+      if (!nav) return;
+      if (bar && bar.style.display !== 'none') {
+        nav.style.top = bar.offsetHeight + 'px';
+      } else {
+        nav.style.top = '0';
+      }
+    }
+    window.addEventListener('load', updateNavTop);
+    window.addEventListener('resize', updateNavTop);
   })();
 </script>
 </body>
