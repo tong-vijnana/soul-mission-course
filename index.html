@@ -147,23 +147,21 @@
      ANNOUNCEMENT BAR — Briefing Session
 ════════════════════════════════════════════════════════ -->
 <div id="announcement-bar" class="w-full sticky top-0 z-30" style="background:#5C3D2E;">
-  <div class="custom-container px-4 py-2 flex items-center justify-between gap-3">
-    <p class="text-white text-[12px] md:text-[13px] font-sans leading-snug flex-1 text-center md:text-left">
-      <span class="mr-1">🗓</span>
-      <span class="font-semibold">免費簡介會</span>
-      <span class="mx-1 opacity-60">｜</span>
-      2026年6月13日（六）13:00–14:00
-      <span class="mx-1 opacity-60">｜</span>
-      實體 / 網上均可參加
-      <span class="mx-2 opacity-60">·</span>
-      WhatsApp 登記 →
-      <a href="https://wa.me/85262886826?text=%E6%88%91%E6%83%B3%E5%A0%B1%E5%90%8D%E3%80%8C%E9%9D%88%E9%AD%82%E4%BD%BF%E5%91%BD%E6%8E%A2%E7%B4%A2%E8%AA%B2%E7%A8%8B%E3%80%8D%E7%B0%A1%E4%BB%8B%E6%9C%83"
-         target="_blank" rel="noopener noreferrer"
-         class="underline underline-offset-2 font-semibold hover:opacity-80 transition-opacity ml-1"
-         style="color:#F5C97A;">
-        +852 6288 6826
-      </a>
-    </p>
+  <div class="custom-container px-4 py-1.5 flex items-center justify-between gap-2">
+    <div class="flex-1 text-center md:text-left">
+      <!-- Line 1: event details -->
+      <p class="text-white text-[11px] md:text-[13px] font-sans leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+        <span class="mr-1">🗓</span><span class="font-semibold">免費簡介會</span><span class="mx-1 opacity-50">｜</span>2026年6月13日（六）13:00–14:00<span class="mx-1 opacity-50">｜</span>實體 / 網上均可參加
+      </p>
+      <!-- Line 2: WhatsApp CTA -->
+      <p class="text-white text-[11px] md:text-[13px] font-sans leading-snug mt-0.5">
+        <span class="opacity-80">WhatsApp 登記 →</span>
+        <a href="https://wa.me/85262886826?text=%E6%88%91%E6%83%B3%E5%A0%B1%E5%90%8D%E3%80%8C%E9%9D%88%E9%AD%82%E4%BD%BF%E5%91%BD%E6%8E%A2%E7%B4%A2%E8%AA%B2%E7%A8%8B%E3%80%8D%E7%B0%A1%E4%BB%8B%E6%9C%83"
+           target="_blank" rel="noopener noreferrer"
+           class="underline underline-offset-2 font-semibold hover:opacity-80 transition-opacity ml-1"
+           style="color:#F5C97A;">+852 6288 6826</a>
+      </p>
+    </div>
     <button id="announcement-close"
             aria-label="關閉公告"
             onclick="document.getElementById('announcement-bar').style.display='none'; document.getElementById('sticky-nav').style.top='0';"
